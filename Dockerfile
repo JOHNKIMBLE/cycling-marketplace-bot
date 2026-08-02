@@ -18,7 +18,7 @@ LABEL org.opencontainers.image.title="cycling-marketplace-bot" \
       org.opencontainers.image.revision="${REVISION}" \
       org.opencontainers.image.created="${CREATED}"
 
-RUN apk add --no-cache tini wget
+RUN apk add --no-cache tini wget \n && rm -rf /usr/local/lib/node_modules/npm \n            /usr/local/bin/npm /usr/local/bin/npx
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY package.json package-lock.json ./
