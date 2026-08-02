@@ -48,10 +48,14 @@ jobs:
       contents: read
       packages: write
     outputs:
-      image: ${{ steps.meta.outputs.tags }}
+      image: ${{ steps.lower.outputs.image }}
+      digest: ${{ steps.build.outputs.digest }}
       version: ${{ steps.meta.outputs.version }}
     steps:
       - uses: actions/checkout@v7
+      - id: lower
+        name: Lowercase image name (OCI refs must be lowercase)
+        run: echo "image=${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
       - uses: docker/setup-qemu-action@v4
       - uses: docker/setup-buildx-action@v4
       - name: Log in to GHCR
@@ -63,7 +67,7 @@ jobs:
       - id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ steps.lower.outputs.image }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -98,7 +102,7 @@ jobs:
       - name: Trivy scan (SARIF for Security tab)
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          image-ref: ${{ env.REGISTRY }}/${{ needs.build.outputs.image }}@${{ needs.build.outputs.digest }}
           format: sarif
           output: trivy.sarif
       - name: Upload SARIF
@@ -108,7 +112,7 @@ jobs:
       - name: Fail on HIGH/CRITICAL
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          image-ref: ${{ env.REGISTRY }}/${{ needs.build.outputs.image }}@${{ needs.build.outputs.digest }}
           format: table
           severity: HIGH,CRITICAL
           ignore-unfixed: true
