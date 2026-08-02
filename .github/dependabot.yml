@@ -16,3 +16,8 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+    # Node majors are chosen deliberately (LTS only); odd-numbered
+    # releases are the short-lived Current line.
+    ignore:
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
