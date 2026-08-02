@@ -1,0 +1,13 @@
+services:
+  cycling-marketplace-bot:
+    image: cycling-marketplace-bot:local
+    build:
+      context: .
+    container_name: cycling-marketplace-bot
+    restart: unless-stopped
+    ports:
+      - "3049:3049"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

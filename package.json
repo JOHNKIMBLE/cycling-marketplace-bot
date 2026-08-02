@@ -1,0 +1,19 @@
+{
+  "name": "cycling-marketplace-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for shared cycling marketplace sync and per-server Strava features",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "discord.js": "^14.26.2",
+    "dotenv": "^17.4.1"
+  }
+}

@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+
+# secrets / local env
+.env
+.env.local
+*.pem
+*.key
+
+# runtime state (contains OAuth tokens + Discord IDs — never commit)
+data/*
+!data/.gitkeep
+*.bak
+*.bak.*
+
+# logs & scratch
+*.log
+npm-debug.log*
+.tmp-cycle-mania/

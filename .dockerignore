@@ -1,0 +1,16 @@
+node_modules
+npm-debug.log*
+.env
+.env.local
+.git
+.gitignore
+.github
+data/*
+!data/.gitkeep
+*.bak
+*.bak.*
+tests
+scripts
+*.md
+Dockerfile*
+compose.yaml
