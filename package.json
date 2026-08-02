@@ -1,6 +1,6 @@
 {
   "name": "cycling-marketplace-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Discord bot for shared cycling marketplace sync and per-server Strava features",
   "main": "src/index.js",
   "scripts": {
