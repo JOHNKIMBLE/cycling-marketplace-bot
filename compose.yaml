@@ -1,6 +1,8 @@
 services:
   cycling-marketplace-bot:
-    image: cycling-marketplace-bot:local
+    # Published by CI: .github/workflows/ci.yml
+    image: ghcr.io/johnkimble/cycling-marketplace-bot:latest
+    # For local development, build instead:  docker compose build
     build:
       context: .
     container_name: cycling-marketplace-bot
