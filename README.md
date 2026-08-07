@@ -1,5 +1,5 @@
 # Kimble's Chicago Cycling Sales Bot
-n[![CI](https://github.com/johnkimble/cycling-marketplace-bot/actions/workflows/ci.yml/badge.svg)](https://github.com/johnkimble/cycling-marketplace-bot/actions/workflows/ci.yml)
+[![CI](https://github.com/johnkimble/cycling-marketplace-bot/actions/workflows/ci.yml/badge.svg)](https://github.com/johnkimble/cycling-marketplace-bot/actions/workflows/ci.yml)
 
 One Discord bot for cycling servers with three features:
 
