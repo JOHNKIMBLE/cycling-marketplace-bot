@@ -44,7 +44,7 @@ The bot is meant to run once and be invited into multiple Discord servers. Each 
 
 ## Requirements
 
-- Node.js 20+ if running outside Docker
+- Node.js 22+ if running outside Docker
 - Discord bot application
 - Strava application
 - public callback URL for Strava OAuth
